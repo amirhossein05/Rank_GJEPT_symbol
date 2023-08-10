@@ -3,6 +3,7 @@
 #include <bitxor.h>
 #include <vector>
 #include <Mod.h>
+#include <ZerosMatrix.h>
 
 using namespace std;
 
@@ -10,40 +11,44 @@ template<typename T>
 T gfAnd(T ele1, T ele2, T n, const vector<vector<T>>& e2p)
 {
 	T gfAnd_val;
-
+	T Power;
 	if (ele1 > n) {
 		ele1 = Mod(ele1, n);
-		if (ele1 == 0) {
-			ele1 = n;
-		}
 	}
 	if (ele2 > n) {
 		ele2 = Mod(ele2, n);
-		if (ele2 == 0) {
-			ele2 = n;
-		}
 	}
-	int Power = ele1 + ele2;
+	if (ele2 == 0 || ele1 == 0) {
+		Power = 0;
+	}
+
+	else {
+		Power = ele1 + ele2;
+	}
+
 
 	if (Power > n)
 	{
 		Power = Mod(Power, n);
+		if (Power == 0)
+		{
+			Power = n;
+		}
 	}
-	if (Power == 0)
-	{
-		Power = n;
-	}
+
 
 	//gfAnd_val = e2p[Power-1][0];
 	gfAnd_val = Power;
 	return gfAnd_val;
 }
 
+
+
 //int main() {
 //	vector<vector<int>> e2p = readCSV<int>("e2p.csv");
 //	vector<vector<int>> p2e = readCSV<int>("p2e.csv");
-//	vector<int> vector1 = {1,4,6 };
-//	vector<int> vector2 = {3,0, 7 };
+//	vector<int> vector1 = {3,1,1 };
+//	vector<int> vector2 = {4,4, 0 };
 //	vector<int> result(vector1.size());
 //
 //	int n = 7;

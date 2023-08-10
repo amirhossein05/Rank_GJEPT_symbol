@@ -33,7 +33,7 @@
     <ClCompile Include="Readcsv.h">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ZerosMatrix.cpp">
+    <ClCompile Include="ZerosMatrix.h">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="testcsv.cpp">

@@ -3,15 +3,21 @@
 #include "swap.h"
 using namespace std;
 
-vector<vector<int>> ZeroMatrix(int n) {
-   vector<vector<int>> matrix(n, vector<int>(n, 0));
+template<typename T>
+vector<vector<T>> ZeroMatrix(T n) {
+   vector<vector<T>> matrix(n, vector<T>(n, 0));
+   return matrix;
+}
+template<typename T>
+vector<vector<T>> ZeroVector(T n) {
+   vector<vector<T>> matrix(1, vector<T>(n, 0));
    return matrix;
 }
 
 //int main() {
 //   int n = 5; // Size of the matrix
 //
-//   vector<vector<int>> Zeroes = ZeroMatrix(n);
+//   vector<vector<int>> Zeroes = ZeroVector(n);
 //
 //   // Print the zero matrix
 //  /* for (int i = 0; i < n; i++) {

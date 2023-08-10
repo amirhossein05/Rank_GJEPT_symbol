@@ -8,6 +8,7 @@
 #include "Readcsv.h"
 #include "Mod.h"
 #include "bitxor.h"
+//#include "ZerosMatrix.h"
 //#include "gfAnd.h"
 //#include "gfAdd.h"
 
@@ -39,7 +40,7 @@ T gfAdd(T ele1, T ele2, T n, const vector<vector<T>>& e2p, const vector<vector<T
 		gfaddval = ele1;
 	}
 	else {
-		for (T i = 0; i < e2p[ele1].size(); i++)
+		for (T i = 0; i < e2p[ele1-1].size(); i++)
 		{
 			gfaddval = bitxor(e2p[ele1 - 1][i], e2p[ele2 - 1][i]);
 		}
@@ -58,35 +59,37 @@ template<typename T>
 T gfAnd(T ele1, T ele2, T n, const vector<vector<T>>& e2p)
 {
 	T gfAnd_val;
-
+	T Power;
 	if (ele1 > n) {
 		ele1 = Mod(ele1, n);
-		if (ele1 == 0) {
-			ele1 = n;
-		}
 	}
 	if (ele2 > n) {
 		ele2 = Mod(ele2, n);
-		if (ele2 == 0) {
-			ele2 = n;
-		}
 	}
-	
-	int Power = ele1 + ele2;
+	if (ele2 == 0 || ele1 == 0) {
+		Power = 0;
+	}
+
+	else {
+		Power = ele1 + ele2;
+	}
+
 
 	if (Power > n)
 	{
 		Power = Mod(Power, n);
-	}
-	if (Power == 0)
-	{
-		Power = n;
+		if (Power == 0)
+		{
+			Power = n;
+		}
 	}
 
-	//gfAnd_val = e2p[Power - 1][0];
+
+	//gfAnd_val = e2p[Power-1][0];
 	gfAnd_val = Power;
 	return gfAnd_val;
 }
+
 
 vector<vector<int>> Mapping(vector<vector<int>> R)
 {
@@ -154,11 +157,12 @@ vector<vector<int>> GJEP_symbol(vector<vector<int>> R, int n)
 					if (ele2 == 0)
 					{
 						ele2 = n;
-						for (int i_col = 0; i_col < R[0].size(); i_col++) {
-							int temp = gfAnd(R[i_col][j], ele2, n, e2p);
-							R[i_col][j] = gfAdd(temp, R[i][i_col], n, e2p, p2e);
-						}
 					}
+						for (int i_col = 0; i_col < R[0].size(); i_col++) {
+							int temp = gfAnd(R[j][i_col], ele2, n, e2p);
+							R[j][i_col] = gfAdd(temp, R[i][i_col], n, e2p, p2e);
+						}
+					
 				}
 			}
 		}
@@ -172,7 +176,7 @@ vector<vector<int>> GJEP_symbol(vector<vector<int>> R, int n)
 
 
 int main() {
-	vector< vector<int>> R = { {3, 1, 0}, {0, 2, 0}, {5, 0, 6} };
+	vector< vector<int>> R = { {3, 1, 0}, {0, 2, 0}, {3, 1, 0} };
 	int n = 7;
 	vector<vector<int>> e2p = readCSV<int>("e2p.csv");
 
