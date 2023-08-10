@@ -129,13 +129,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="bitxor.h">
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\10\Desktop\rank_jordan\Rank_GJEPT\Rank_GJEPT\x64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\10\Desktop\rank_jordan\Rank_GJEPT\Rank_GJEPT;C:\Users\10\Desktop\rank_jordan\Rank_GJEPT\Rank_GJEPT\x64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="gfAdd.h">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\10\Desktop\rank_jordan\Rank_GJEPT\Rank_GJEPT;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="gfAnd.h">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\10\Desktop\rank_jordan\Rank_GJEPT\Rank_GJEPT;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="gfTable.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\10\Desktop\rank_jordan\Rank_GJEPT\Rank_GJEPT;C:\Users\10\Desktop\rank_jordan\Rank_GJEPT\Rank_GJEPT\x64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="GF_rank_sym.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\10\Desktop\rank_jordan\Rank_GJEPT\Rank_GJEPT;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -151,7 +154,9 @@
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\10\Desktop\C++_library\armadillo-12.6.1\armadillo-12.6.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="xorBinaryData.h" />
-    <ClCompile Include="ZerosMatrix.h" />
+    <ClCompile Include="ZerosMatrix.h">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\10\Desktop\rank_jordan\Rank_GJEPT\Rank_GJEPT;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mod.h" />

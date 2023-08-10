@@ -8,6 +8,7 @@
 #include "Readcsv.h"
 #include "Mod.h"
 #include "bitxor.h"
+
 //#include "ZerosMatrix.h"
 //#include "gfAnd.h"
 //#include "gfAdd.h"
@@ -175,20 +176,20 @@ vector<vector<int>> GJEP_symbol(vector<vector<int>> R, int n)
 
 
 
-int main() {
-	vector< vector<int>> R = { {3, 1, 0}, {0, 2, 0}, {3, 1, 0} };
-	int n = 7;
-	vector<vector<int>> e2p = readCSV<int>("e2p.csv");
-
-	vector< vector<int>> R_new = Mapping(R);
-	vector< vector<int>> R_final = GJEP_symbol(R_new, n);
-	// Print the modified R matrix
-	for (size_t i = 0; i < R_final.size(); i++) {
-		for (size_t j = 0; j < R_final[0].size(); j++) {
-			cout << R_final[i][j] << " ";
-		}
-		cout << endl;
-	}
-
-	return 0;
-}
+//int main() {
+//	vector< vector<int>> R = { {3, 1, 0}, {0, 2, 0}, {3, 1, 0} };
+//	int n = 7;
+//	vector<vector<int>> e2p = readCSV<int>("e2p.csv");
+//
+//	vector< vector<int>> R_new = Mapping(R);
+//	vector< vector<int>> R_final = GJEP_symbol(R_new, n);
+//	// Print the modified R matrix
+//	for (size_t i = 0; i < R_final.size(); i++) {
+//		for (size_t j = 0; j < R_final[0].size(); j++) {
+//			cout << R_final[i][j] << " ";
+//		}
+//		cout << endl;
+//	}
+//
+//	return 0;
+//}

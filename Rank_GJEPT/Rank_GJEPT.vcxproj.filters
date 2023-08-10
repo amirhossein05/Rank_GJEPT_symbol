@@ -51,6 +51,9 @@
     <ClCompile Include="GF_rank_sym.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="gfTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mod.h">

@@ -13,6 +13,11 @@ vector<vector<T>> ZeroVector(T n) {
    vector<vector<T>> matrix(1, vector<T>(n, 0));
    return matrix;
 }
+template<typename T>
+vector<vector<T>> OnesVector(T n) {
+   vector<vector<T>> matrix(1, vector<T>(n, 1));
+   return matrix;
+}
 
 //int main() {
 //   int n = 5; // Size of the matrix
