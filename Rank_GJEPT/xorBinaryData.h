@@ -1,4 +1,6 @@
-﻿#include <iostream>
+﻿#ifndef XORBINARYDATA_H
+#define XORBINARYDATA_H
+#include <iostream>
 #include <bitset>
 #include <string>
 
@@ -18,6 +20,8 @@ string xorBinaryData(const string& data1, const string& data2) {
 
    return result.to_string().substr(N - data1.length());
 }
+#endif
+
 
 
 //int main() {

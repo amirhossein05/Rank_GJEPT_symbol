@@ -1,3 +1,5 @@
+#ifndef GFAND_H
+#define GFAND_H
 #include <iostream>
 #include <Readcsv.h>
 #include <bitxor.h>
@@ -41,6 +43,7 @@ T gfAnd(T ele1, T ele2, T n, const vector<vector<T>>& e2p)
 	gfAnd_val = Power;
 	return gfAnd_val;
 }
+#endif
 
 
 

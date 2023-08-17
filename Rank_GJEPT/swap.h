@@ -1,3 +1,5 @@
+#ifndef SWAP_H
+#define SWAP_H
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -35,3 +37,4 @@ void printMatrix(const vector<vector<T>>& matrix) {
    // Add a newline or two after printing the matrix
    cout << endl << endl;
 }
+#endif

@@ -1,3 +1,5 @@
+#ifndef GFADD_H
+#define GFADD_H
 #include <iostream>
 #include <Readcsv.h>
 #include <bitxor.h>
@@ -7,7 +9,7 @@
 using namespace std;
 
 template<typename T>
-T gfAdd(T ele1, T ele2, T n, const vector<vector<T>>& e2p, const vector<vector<T>>& p2e)
+T gfAdd(T ele1, T ele2, T n, const vector<vector<T>>& e2p, const vector<T>& p2e)
 {
 	T gfaddval;
 
@@ -32,20 +34,23 @@ T gfAdd(T ele1, T ele2, T n, const vector<vector<T>>& e2p, const vector<vector<T
 		gfaddval = ele1;
 	}
 	else {
-		for (T i = 0; i < e2p[ele1 - 1].size(); i++)
+		for (T i = 0; i < e2p.size();i++)
 		{
-			gfaddval = bitxor(e2p[ele1 - 1][i], e2p[ele2 - 1][i]);
+			gfaddval = bitxor(e2p[i][ele1 - 1], e2p[i][ele2 - 1]);
 		}
-
+		
 		if (gfaddval == 1) {
 			gfaddval = n;
 		}
 		else if (gfaddval != 0) {
-			gfaddval = p2e[gfaddval - 1][0];
+			//gfaddval = p2e[gfaddval - 1][0];
+			T p2e_temp = static_cast<int>(p2e[gfaddval - 1]);
+			gfaddval = p2e_temp;
 		}
 	}
 	return gfaddval;
 }
+#endif
 //int main() {
 //   vector<vector<int>> e2p = readCSV<int>("e2p.csv");
 //   vector<vector<int>> p2e = readCSV<int>("p2e.csv");

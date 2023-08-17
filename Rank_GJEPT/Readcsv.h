@@ -1,3 +1,6 @@
+#ifndef READCSV_H
+#define READCSV_H
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -6,26 +9,27 @@
 using namespace std;
 
 template<typename T>
-vector<vector<T>> readCSV(string filename) {
+vector<T> readCSV(string filename) {
    ifstream file(filename);
 
-   vector<vector<T>> data;
+   vector<T> data;
    string line;
 
    while (getline(file, line)) {
-      vector<T> row;
       stringstream s(line);
       string word;
 
       while (getline(s, word, ',')) {
-         row.push_back(stoi(word));
+         data.push_back(stoi(word));
       }
-
-      data.push_back(row);
    }
 
    return data;
 }
+
+#endif
+
+
 
 
 //int main() {

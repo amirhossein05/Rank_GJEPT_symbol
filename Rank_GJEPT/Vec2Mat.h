@@ -1,3 +1,5 @@
+#ifndef VEC2MAT_H
+#define VEC2MAT_H
 #include <iostream>
 #include <vector>
 
@@ -28,16 +30,16 @@ vector<vector<T>> Vec2Mat(vector<T> vec, int cols) {
 
    return matrix;
 }
-
+#endif
 //int main() {
 //   int cols;
 //   cout << "Enter number of columns: ";
 //   cin >> cols;
 //
 //   // Vector can be input by the user in a real scenario
-//   vector<int> vec = { 1, 2, 3, 4, 5 };
-//
-//   vector<vector<int>> matrix = Vec2Mat(vec, cols);
+   /*vector<int> vec = { 1, 2, 3, 4, 5 };
+
+   vector<vector<int>> matrix = Vec2Mat(vec, cols);*/
 //
 //   // Printing matrix
 //   for (auto& row : matrix) {

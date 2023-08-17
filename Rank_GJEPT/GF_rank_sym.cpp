@@ -1,108 +1,27 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include "Vec2Mat.h"
-#include "xorBinaryData.h"
-#include "Identity.h"
 #include "swap.h"
 #include "Readcsv.h"
 #include "Mod.h"
-#include "bitxor.h"
-
-//#include "ZerosMatrix.h"
-//#include "gfAnd.h"
-//#include "gfAdd.h"
-
+#include "gfAnd.h"
+#include "gfAdd.h"
+#include "gfTable.h"
+#include "Vec2Mat.h"
 
 using namespace std;
-template<typename T>
-T gfAdd(T ele1, T ele2, T n, const vector<vector<T>>& e2p, const vector<vector<T>>& p2e)
-{
-	T gfaddval;
-
-	if (ele1 > n) {
-		ele1 = Mod(ele1, n);
-		if (ele1 == 0) {
-			ele1 = n;
-		}
-	}
-	if (ele2 > n) {
-		ele2 = Mod(ele2, n);
-		if (ele2 == 0) {
-			ele2 = n;
-		}
-	}
-	if (ele1 == 0)
-	{
-		gfaddval = ele2;
-	}
-	else if (ele2 == 0)
-	{
-		gfaddval = ele1;
-	}
-	else {
-		for (T i = 0; i < e2p[ele1-1].size(); i++)
-		{
-			gfaddval = bitxor(e2p[ele1 - 1][i], e2p[ele2 - 1][i]);
-		}
-
-		if (gfaddval == 1) {
-			gfaddval = n;
-		}
-		else if (gfaddval != 0) {
-			gfaddval = p2e[gfaddval - 1][0];
-		}
-	}
-	return gfaddval;
-}
-
-template<typename T>
-T gfAnd(T ele1, T ele2, T n, const vector<vector<T>>& e2p)
-{
-	T gfAnd_val;
-	T Power;
-	if (ele1 > n) {
-		ele1 = Mod(ele1, n);
-	}
-	if (ele2 > n) {
-		ele2 = Mod(ele2, n);
-	}
-	if (ele2 == 0 || ele1 == 0) {
-		Power = 0;
-	}
-
-	else {
-		Power = ele1 + ele2;
-	}
 
 
-	if (Power > n)
-	{
-		Power = Mod(Power, n);
-		if (Power == 0)
-		{
-			Power = n;
-		}
-	}
-
-
-	//gfAnd_val = e2p[Power-1][0];
-	gfAnd_val = Power;
-	return gfAnd_val;
-}
-
-
-vector<vector<int>> Mapping(vector<vector<int>> R)
+vector<vector<int>> Mapping(vector<vector<int>> R, vector<vector<int>>& e2p)
 {
 
 	// Add gf Table
-	vector<vector<int>> e2p = readCSV<int>("e2p.csv");
-
+	
 	for (int i = 0; i < R[0].size(); i++) { // number of columns
 		for (int j = 0; j < R.size(); j++) { // number of Rows
 			if (R[i][j] != 0) {
-				for (int k = 0; k < e2p.size(); k++) {
-					if (e2p[k][0] == R[i][j]) {
+				for (int k = 0; k < e2p[0].size(); k++) {
+					if (e2p[0][k] == R[i][j]) {
 						R[i][j] = k + 1;
 						break;
 					}
@@ -112,10 +31,11 @@ vector<vector<int>> Mapping(vector<vector<int>> R)
 	}
 	return R;
 }
-vector<vector<int>> GJEP_symbol(vector<vector<int>> R, int n)
+
+
+vector<vector<int>> GJEP_symbol(vector<vector<int>> R, int n, vector<vector<int>>& e2p, vector<int>& p2e)
 {
-	vector<vector<int>> e2p = readCSV<int>("e2p.csv");
-	vector<vector<int>> p2e = readCSV<int>("p2e.csv");
+	
 	for (int i = 0; i < R[0].size(); i++) {
 		if (R[i][i] == 0) {
 			for (int j = i + 1; j < R[0].size(); ++j) {
@@ -139,7 +59,8 @@ vector<vector<int>> GJEP_symbol(vector<vector<int>> R, int n)
 		if (Mod(R[i][i], n) != 0)
 		{
 			vector<int> ele1 = R[i];
-			int ele2 = Mod(n - R[i][i], n);
+			int RII = R[i][i];
+			int ele2 = Mod(n - RII, n);
 			if (ele2 == 0)
 			{
 				ele2 = n;
@@ -154,7 +75,8 @@ vector<vector<int>> GJEP_symbol(vector<vector<int>> R, int n)
 			{
 				if (R[j][i] != 0)
 				{
-					int ele2 = Mod(n - R[j][i], n);
+					int RJI = R[j][i];
+					int ele2 = Mod(n - RJI, n);
 					if (ele2 == 0)
 					{
 						ele2 = n;
@@ -176,20 +98,56 @@ vector<vector<int>> GJEP_symbol(vector<vector<int>> R, int n)
 
 
 
-//int main() {
-//	vector< vector<int>> R = { {3, 1, 0}, {0, 2, 0}, {3, 1, 0} };
-//	int n = 7;
-//	vector<vector<int>> e2p = readCSV<int>("e2p.csv");
-//
-//	vector< vector<int>> R_new = Mapping(R);
-//	vector< vector<int>> R_final = GJEP_symbol(R_new, n);
-//	// Print the modified R matrix
-//	for (size_t i = 0; i < R_final.size(); i++) {
-//		for (size_t j = 0; j < R_final[0].size(); j++) {
-//			cout << R_final[i][j] << " ";
-//		}
-//		cout << endl;
-//	}
-//
-//	return 0;
-//}
+int main() {
+	//ctor< vector<int>> R= { {3, 1, 0}, {0, 2, 0}, {3, 1, 0} };
+	vector<int> csvData = readCSV<int>("data.csv");
+	int cols = 255;
+	
+	vector<vector<int>> R = Vec2Mat(csvData, cols);
+	// creat n*n matrix
+	while (R.size() > R[0].size()) {
+		R.pop_back(); // This removes the last row. Change this if you want to remove a different row.
+	}
+	//// Print n*n matrix
+	//cout << "\nTransformed matrix:" << endl;
+	//for (const auto& row : R) {
+	//	for (int num : row) {
+	//		cout << num << " ";
+	//	}
+	//	cout << endl;
+	//}
+
+	int n = 255;
+	int m = 8;
+	int prim_poly = 285;
+	vector<int> twos;
+	for (int i = 0; i <= 2 * m - 2; i++) {
+		twos.push_back(pow(2, i));
+	}
+	
+	vector<vector<int>> e2p = e2p_table(m, prim_poly, twos);
+	vector<int> p2e = sort_indexes(e2p, m);
+	vector< vector<int>> R_new = Mapping(R,e2p);
+	vector< vector<int>> R_final = GJEP_symbol(R_new, n,e2p,p2e);
+	// Print the modified R matrix
+	/*for (size_t i = 0; i < R_final.size(); i++) {
+		for (size_t j = 0; j < R_final[0].size(); j++) {
+			cout << R_final[i][j] << " ";
+		}
+		cout << endl;
+	}*/
+
+	int Rank = 0;
+
+	// Iterate over each row
+	for (const auto& row : R_final) {
+		// Check if the row contains any non-zero elements
+		if (any_of(row.begin(), row.end(), [](int i) {return i != 0; })) {
+			Rank++;
+		}
+	}
+
+	cout << "Rank of matrix is: " << Rank - 1 << endl;
+	
+	return 0;
+}

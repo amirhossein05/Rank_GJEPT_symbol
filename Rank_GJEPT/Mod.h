@@ -1,3 +1,5 @@
+#ifndef MOD_H
+#define MOD_H
 #include <iostream>
 
 using namespace std;
@@ -9,6 +11,7 @@ T Mod(T dividend, T divisor) {
    T mod = (dividend % divisor + divisor) % divisor;
    return mod;
 }
+#endif
 
 //int main() {
 //   int intDividend = 10;

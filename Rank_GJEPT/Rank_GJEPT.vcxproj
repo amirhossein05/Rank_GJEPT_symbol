@@ -137,7 +137,7 @@
     <ClCompile Include="gfAnd.h">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\10\Desktop\rank_jordan\Rank_GJEPT\Rank_GJEPT;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
-    <ClCompile Include="gfTable.cpp">
+    <ClCompile Include="gfTable.h">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\10\Desktop\rank_jordan\Rank_GJEPT\Rank_GJEPT;C:\Users\10\Desktop\rank_jordan\Rank_GJEPT\Rank_GJEPT\x64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="GF_rank_sym.cpp">

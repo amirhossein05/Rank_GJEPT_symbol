@@ -1,3 +1,5 @@
+#ifndef ZEROSMATRIX_H
+#define ZEROSMATRIX_H
 #include <iostream>
 #include <vector>
 #include "swap.h"
@@ -18,6 +20,7 @@ vector<vector<T>> OnesVector(T n) {
    vector<vector<T>> matrix(1, vector<T>(n, 1));
    return matrix;
 }
+#endif
 
 //int main() {
 //   int n = 5; // Size of the matrix

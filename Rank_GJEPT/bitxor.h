@@ -1,7 +1,10 @@
+#ifndef BITXOR_H
+#define BITXOR_H
 #include<iostream>
 #include<vector>
 #include<cmath>
 #include<functional>
+
 using namespace std;
 
 template<typename T>
@@ -60,6 +63,7 @@ T bitxor(T ele1, T ele2) {
 
    return decimal;
 }
+#endif
 //
 //int main() {
 //   int ele1, ele2;

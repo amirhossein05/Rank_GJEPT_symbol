@@ -1,3 +1,5 @@
+#ifndef IDENTITY_H
+#define IDENTITY_H
 #include <iostream>
 #include <vector>
 
@@ -15,7 +17,7 @@ vector<vector<int>> Identity(T num)
 
    return matrix;
 }
-
+#endif
 
 
 
