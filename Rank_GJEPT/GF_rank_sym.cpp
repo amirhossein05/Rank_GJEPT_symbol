@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+
 #include "swap.h"
 #include "Readcsv.h"
 #include "Mod.h"
@@ -8,6 +9,7 @@
 #include "gfAdd.h"
 #include "gfTable.h"
 #include "Vec2Mat.h"
+
 
 using namespace std;
 
@@ -35,7 +37,6 @@ vector<vector<int>> Mapping(vector<vector<int>> R, vector<vector<int>>& e2p)
 
 vector<vector<int>> GJEP_symbol(vector<vector<int>> R, int n, vector<vector<int>>& e2p, vector<int>& p2e)
 {
-	
 	for (int i = 0; i < R[0].size(); i++) {
 		if (R[i][i] == 0) {
 			for (int j = i + 1; j < R[0].size(); ++j) {
@@ -128,7 +129,10 @@ int main() {
 	vector<vector<int>> e2p = e2p_table(m, prim_poly, twos);
 	vector<int> p2e = sort_indexes(e2p, m);
 	vector< vector<int>> R_new = Mapping(R,e2p);
+	time_t start, end;
+	time(&start);
 	vector< vector<int>> R_final = GJEP_symbol(R_new, n,e2p,p2e);
+	time(&end);
 	// Print the modified R matrix
 	/*for (size_t i = 0; i < R_final.size(); i++) {
 		for (size_t j = 0; j < R_final[0].size(); j++) {
@@ -147,7 +151,10 @@ int main() {
 		}
 	}
 
-	cout << "Rank of matrix is: " << Rank - 1 << endl;
-	
+	cout << "Rank of matrix is: " << Rank  << endl;
+	double time_taken = double(end - start);
+	cout << "Time taken by program is : " << fixed
+		<< time_taken << setprecision(5);
+	cout << " sec " << endl;
 	return 0;
 }
