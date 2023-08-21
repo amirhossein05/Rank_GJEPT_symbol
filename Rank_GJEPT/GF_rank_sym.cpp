@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-
 #include "swap.h"
 #include "Readcsv.h"
 #include "Mod.h"
@@ -15,10 +14,7 @@ using namespace std;
 
 
 vector<vector<int>> Mapping(vector<vector<int>> R, vector<vector<int>>& e2p)
-{
-
-	// Add gf Table
-	
+{	
 	for (int i = 0; i < R[0].size(); i++) { // number of columns
 		for (int j = 0; j < R.size(); j++) { // number of Rows
 			if (R[i][j] != 0) {
@@ -34,7 +30,7 @@ vector<vector<int>> Mapping(vector<vector<int>> R, vector<vector<int>>& e2p)
 	return R;
 }
 
-
+// Gauss jordan elimination algorithm
 vector<vector<int>> GJEP_symbol(vector<vector<int>> R, int n, vector<vector<int>>& e2p, vector<int>& p2e)
 {
 	for (int i = 0; i < R[0].size(); i++) {
@@ -52,7 +48,6 @@ vector<vector<int>> GJEP_symbol(vector<vector<int>> R, int n, vector<vector<int>
 				if (R[j][i] == 1)
 				{
 					R = swapRows(R, i, j);
-
 					break;
 				}
 			}
@@ -66,7 +61,6 @@ vector<vector<int>> GJEP_symbol(vector<vector<int>> R, int n, vector<vector<int>
 			{
 				ele2 = n;
 			}
-			//vector<vector<int>>  R;
 			for (int j_col = 0; j_col < ele1.size(); j_col++)
 			{
 				int temp = gfAnd(ele1[j_col], ele2, n, e2p);
@@ -86,7 +80,6 @@ vector<vector<int>> GJEP_symbol(vector<vector<int>> R, int n, vector<vector<int>
 							int temp = gfAnd(R[j][i_col], ele2, n, e2p);
 							R[j][i_col] = gfAdd(temp, R[i][i_col], n, e2p, p2e);
 						}
-					
 				}
 			}
 		}
@@ -100,10 +93,12 @@ vector<vector<int>> GJEP_symbol(vector<vector<int>> R, int n, vector<vector<int>
 
 
 int main() {
-	//ctor< vector<int>> R= { {3, 1, 0}, {0, 2, 0}, {3, 1, 0} };
+	//vector< vector<int>> R= { {3, 1, 0}, {0, 2, 0}, {3, 1, 0} };
+	time_t start, end;
+	time(&start);
 	vector<int> csvData = readCSV<int>("data.csv");
 	int cols = 255;
-	
+	time(&end);
 	vector<vector<int>> R = Vec2Mat(csvData, cols);
 	// creat n*n matrix
 	while (R.size() > R[0].size()) {
@@ -119,7 +114,7 @@ int main() {
 	//}
 
 	int n = 255;
-	int m = 8;
+	int m = 8; 
 	int prim_poly = 285;
 	vector<int> twos;
 	for (int i = 0; i <= 2 * m - 2; i++) {
@@ -129,10 +124,9 @@ int main() {
 	vector<vector<int>> e2p = e2p_table(m, prim_poly, twos);
 	vector<int> p2e = sort_indexes(e2p, m);
 	vector< vector<int>> R_new = Mapping(R,e2p);
-	time_t start, end;
-	time(&start);
+	
 	vector< vector<int>> R_final = GJEP_symbol(R_new, n,e2p,p2e);
-	time(&end);
+	
 	// Print the modified R matrix
 	/*for (size_t i = 0; i < R_final.size(); i++) {
 		for (size_t j = 0; j < R_final[0].size(); j++) {

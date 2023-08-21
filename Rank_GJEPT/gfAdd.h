@@ -36,7 +36,8 @@ T gfAdd(T ele1, T ele2, T n, const vector<vector<T>>& e2p, const vector<T>& p2e)
 	else {
 		for (T i = 0; i < e2p.size();i++)
 		{
-			gfaddval = bitxor(e2p[i][ele1 - 1], e2p[i][ele2 - 1]);
+			//gfaddval = bitxor(e2p[i][ele1 - 1], e2p[i][ele2 - 1]);
+			gfaddval = e2p[i][ele1 - 1]^ e2p[i][ele2 - 1];
 		}
 		
 		if (gfaddval == 1) {

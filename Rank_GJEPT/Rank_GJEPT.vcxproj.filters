@@ -54,6 +54,9 @@
     <ClCompile Include="gfTable.h">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="test_speed.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mod.h">

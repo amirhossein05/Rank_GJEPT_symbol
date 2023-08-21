@@ -11,6 +11,11 @@ vector<vector<T>> ZeroMatrix(T n) {
    return matrix;
 }
 template<typename T>
+vector<vector<T>> OnesMatrix(T n) {
+   vector<vector<T>> matrix(n, vector<T>(n, 1));
+   return matrix;
+}
+template<typename T>
 vector<vector<T>> ZeroVector(T n) {
    vector<vector<T>> matrix(1, vector<T>(n, 0));
    return matrix;
