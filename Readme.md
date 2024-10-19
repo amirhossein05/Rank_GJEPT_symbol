@@ -5,7 +5,6 @@ This repository contains a C++ project that calculates symbol rank using a Gauss
 * Support for Noisy Channels: The rank calculation is optimized for channels with noise, improving the accuracy and efficiency of error detection in practical use cases.
 * Channel Coding Support: The symbol rank calculations work well with error-correcting codes, including Reed-Solomon codes, to protect data integrity.
 
-## Directory Structure
 
 ## Directory Structure
 
