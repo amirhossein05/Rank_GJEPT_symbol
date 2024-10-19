@@ -35,4 +35,7 @@ This repository contains a C++ project that calculates symbol rank using a Gauss
 
 - **C++ Compiler**: Ensure you have a C++ compiler installed (e.g., g++, clang, or MSVC).
 - **CSV Library**: The project uses CSV files for matrix input/output, so a CSV reading/writing library or functionality is required.
+
+## Contributions
+Feel free to open issues and submit pull requests. Contributions are welcome!
   
